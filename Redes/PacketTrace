@@ -1,0 +1,10 @@
+--Usuario
+Switch>enable
+
+--privilegiado
+Switch#conf ter
+
+--configuracion global
+Switch(config)#
+
+EXIT
