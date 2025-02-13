@@ -1,22 +1,56 @@
+      *Mundo fisico*
+-Se conectan los cables (USB-VGA) y (ETERNET).
+-Se checa que sistema operativo se tiene.
+-Se usa 'putty' (Para usar la "Terminal")
+  +Contraseñas de UNIX y todas -------> : Cisco
+  +Configuracion de Terminal: Se le cambia la ruta de .../...  a .../OUBS0
+
+CONVERTIDOR
+...
+
+
+
+COMANDOS para las torres donde hay MAC    
+-Cd /dev
+-ls tty.usb*
+-Screen nombre de arriba 
+
+
+      ++ Scrip ++
 //CONFIGURACIÓN BASICA
 //SWITCH
 enable
 configure terminal
-hostname FINANZAS
-no ip domain-lookup enable password cisco
-line console 0
-Password cisco
+hostname FINANZAS  //Le pone nombre al equipo
+no ip domain-lookup enable password cisco    //Inhabilita busqueda de dominio
+
+//Define cuantas consolas hay
+line console 0    
+Password cisco    
 login
+
+//Define cuantas terminales remotas
 line vty 0 6
 password cisco
 login
+
+//Definir el mensaje de bienvdenida
 banner motd #;Solo personal autorizado!#
+
+//Para guaradar (en modo privili¿egiado)
+write
+
 // revisar la configuración en ejecución
 Show running-config
+
 //habilitar cifrado de contraseñas
 Service password-encryption
+
 //revisar nuevamente el efecto del cifrado
 Show running-config
+
 //otro comandos de revisión
 show version
 show ip interface brief
+
+
