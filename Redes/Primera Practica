@@ -1,0 +1,22 @@
+//CONFIGURACIÓN BASICA
+//SWITCH
+enable
+configure terminal
+hostname FINANZAS
+no ip domain-lookup enable password cisco
+line console 0
+Password cisco
+login
+line vty 0 6
+password cisco
+login
+banner motd #;Solo personal autorizado!#
+// revisar la configuración en ejecución
+Show running-config
+//habilitar cifrado de contraseñas
+Service password-encryption
+//revisar nuevamente el efecto del cifrado
+Show running-config
+//otro comandos de revisión
+show version
+show ip interface brief
