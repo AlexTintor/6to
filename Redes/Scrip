@@ -1,0 +1,19 @@
+enable
+configure terminal
+hostname CENTRAL
+no ip domain-lookup
+banner motd #;Solo personal autorizado!#
+
+line console 0
+Password cisco
+login
+line vty 0 6
+password cisco
+login
+banner motd #;Solo personal autorizado!#
+
+Show running-config
+Service password-encryption
+Show running-config
+show version
+show ip interface brief
