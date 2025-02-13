@@ -1,0 +1,5 @@
+enable
+configure terminal
+hostname CENTRAL
+no ip domain-lookup
+banner motd #;Solo personal autorizado!#
