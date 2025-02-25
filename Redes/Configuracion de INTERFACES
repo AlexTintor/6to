@@ -15,7 +15,7 @@ show ip interface brief
 ***CONFIGURACION DE INTERFACES***
 
 interface vlan1
-ip address 192.168.1.254  255.255.255.0
+ip address 192.168.1.254 255.255.255.0
 no shutdown
 
 show ip interface brief
