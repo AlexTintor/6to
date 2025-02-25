@@ -2,7 +2,7 @@
 ***CONFIGURACION BASICA DE SWITCH***
 enable
 configure terminal
-hostname DEPTO-A
+hostname LAN1
 no ip domain-lookup
 banner motd #Solo personal autorizado!#
 service password-encryption
