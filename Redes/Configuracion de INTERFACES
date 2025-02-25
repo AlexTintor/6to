@@ -20,3 +20,9 @@ no shutdown
 
 show ip interface brief
 //para checar si tiene direccion ip asociada, que todo vaya bien
+
+LAN1(config-if)#      do sh ip int brief
+
+
+PING   x . x . x . x
+
