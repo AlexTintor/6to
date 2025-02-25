@@ -1,0 +1,22 @@
+
+***CONFIGURACION BASICA DE SWITCH***
+enable
+configure terminal
+hostname DEPTO-A
+no ip domain-lookup
+banner motd #Solo personal autorizado!#
+service password-encryption
+-
+show running-config
+show version
+show ip interface brief
+
+
+***CONFIGURACION DE INTERFACES***
+
+interface vlan1
+ip address 192.168.1.254  255.255.255.0
+no shutdown
+
+show ip interface brief
+//para checar si tiene direccion ip asociada, que todo vaya bien
