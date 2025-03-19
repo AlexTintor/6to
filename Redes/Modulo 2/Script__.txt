@@ -1,0 +1,44 @@
+SWITCH DEPTO1
+enable
+configure terminal
+hostname DEPTO2
+no ip domain-lookup
+enable pass cisco
+line console 0
+Password cisco
+login
+line yty 0 4
+password cisco
+login
+banner motd #;Solo personal autorizado!#
+Service password-encryption
+
+CONFIGURACION DE INTERFACES
+
+SWITCH DEPTO 1
+
+interface vlan1
+ip add 200.33.16.2 255.255.255.0
+no shut
+
+
+SWITCH DEPTO 2
+
+interface vlan1
+200.33.17.1----
+ip add 200.33.17.2 255.255.255.0
+no shut
+
+
+ROUTERSISTEMAS
+
+int GIG0/0
+ip add 200.33.16.254 255.255.255.0
+no shutdown
+
+int GIG0/1
+ip add 200.33.17.254 255.255.255.0
+no shutdown
+
+int loopback 1
+ip add 200.33.18.1 255.255.255.252
