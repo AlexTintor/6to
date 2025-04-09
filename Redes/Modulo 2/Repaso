@@ -118,3 +118,5 @@ no shutdown
 interface loopback 1
 ip address 120.0.32.2 255.255.240.0
 no shutdown
+
+router(config)# ip routing
