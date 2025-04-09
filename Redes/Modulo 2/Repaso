@@ -1,0 +1,120 @@
+Caso E
+198.0.0.0 /27
+4564::/ 64
+2 loopbacks
+
+	Sub-neteo 3 subredes
+
+#0
+198.-.-.000 | 11111
+198.0.0.0 red >
+198.0.0.31 brod <
+
+#1
+198.-.-.001 | 11111
+198.0.0.32 red >
+198.0.0.63 brod <
+
+#2
+198.-.-.010 | 11111
+198.0.0.64 red >
+198.0.0.95 brod < 
+
+
+	Scrip
+——
+
+Switch S0
+
+enable
+conf t
+hostname S0
+no ip domain-lookup
+banner motd #¡Solo personal autorizado!#    
+
+interface vlan1 
+ip add 198.0.0.2 255.255.255.224
+no shutdown
+
+exit
+ip default-gateway 198.0.0.1
+
+——
+
+Switch S1
+
+enable 
+conf t
+hostname S1
+no ip domain-lookup
+banner motd #¡Solo personal autorizado!#
+
+interface vlan1
+ip add 198.0.0.34 255.255.255.224
+no shut
+
+exit
+ip default-gateway 198.0.0.33
+——
+
+Switch S2
+enable
+conf t
+hostname S2
+banner motd #¡Solo personal autorizado!#
+
+interface vlan1
+ip add 198.0.0.66 255.255.255.224
+no shut
+
+exit
+ip default-gateway 198.0.0.65
+
+——
+
+Router
+enable
+conf t
+hostname Router
+banner motd #¡Solo personal autorizado!#
+
+int GIG0/0
+ip add 198.0.0.1 255.255.255.224
+no shut
+
+exit
+int GIG0/1
+ip add 198.0.0.33 255.255.255.224
+no shut
+
+exit
+int GIG0/2
+ip add 198.0.0.65 255.255.255.224
+no shut
+
+
+exit
+ipv6 unicast-routing
+int GIG0/0
+ipv6 address 4564:A::1/64
+no shut
+
+
+exit
+ipv6 unicast-routing
+int GIG0/1
+ipv6 address 4564:B::1/64
+no shut
+
+
+++++++++++++++++++++++++++++++
+enable
+configure terminal
+
+interface loopback 0
+ip address 120.0.32.1 255.255.240.0
+no shutdown
+
+interface loopback 1
+ip address 120.0.32.2 255.255.240.0
+no shutdown
