@@ -1,0 +1,52 @@
+//ROUTER CONFIG TIJUANA
+enable
+conf t
+hostname TIJUANA
+no ip domain-lookup
+banner motd #¡SOLO PERSONAL AUTORIZADO!#
+ 
+////INTERFACES DE ROUTER TIJUANA CONFIGURACION
+ 
+////CONF LOOKBACK1
+int loopback 0
+ip add 200.33.16.1 255.255.255.0
+ 
+//CONFIGURACION INTERFAZ
+int s0/3/0
+ip add 192.168.3.9 255.255.255.252
+CLOCK RATE 128000
+no shut
+ 
+int s0/3/1
+ip add 192.168.3.6 255.255.255.252
+no shutdown
+ 
+ 
+//ERNRUTAMIENTO
+ip route <red remota> <mascara de red remota> <ip siguiente salto o nombre interfaz>
+ipv6 route <red remota/prefijo> <ip de salto>
+ 
+contiene las entradas para todas las redes y subredes conocidas
+ 
+CULIACAN
+ip route 11.0.0.0 255.255.255.0 192.168.3.6
+ip route 11.1.0.0 255.255.255.0 192.168.3.6
+ip route 200.33.16.0 255.255.255.0 192.168.3.6
+ip route 192.168.3.8 255.255.255.252 192.168.3.6
+
+ipv6 route 
+ 
+MAZATLAN
+IP ROUTE 10.0.0.0 255.255.0.0 192.168.3.9
+IP ROUTE 10.1.0.0 255.255.0.0 192.168.3.9
+IP ROUTE 200.33.16.0 255.255.255.0 192.168.3.9
+IP ROUTE 192.168.3.4 255.255.255.252 192.168.3.9
+ 
+TIJUANA
+ip route 11.0.0.0 255.255.255.0 192.168.3.10
+ip route 11.1.0.0 255.255.255.0 192.168.3.10
+ip route 10.0.0.0 255.255.0.0 192.168.3.5
+ip route 10.1.0.0 255.255.0.0 192.168.3.5
+
+
+
