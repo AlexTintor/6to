@@ -1,0 +1,260 @@
+//TORRE 1
+//Router
+ 
+enable
+configure terminal
+hostname TORRE1
+ 
+//Configurar gig 0/0 para su misma red del router hacia el switch
+no ip domain-lookup
+ipv6 unicast-routing
+interface GigabitEthernet0/0
+ipv6 address 1234::1/64
+ipv6 address FE80::1 link-local
+no shutdown
+ 
+//configurar serial
+int se0/0/0 
+ipv6 unicast-routing 
+interface se0/0/0
+ipv6 address AAAA::1/64
+ipv6 address FE80::1 link-local
+clock rate 128000
+no shutdown
+ 
+//configurar loopback
+int loopback1 
+ipv6 unicast-routing
+int loopback1 
+ipv6 address CCC::1/64 
+ipv6 address FE80::1 link-local
+no shut
+ 
+//ip route
+ipv6 route ::/0 AAAA::2
+ 
+ 
+//TORRE 2
+//Router
+ 
+enable
+configure terminal
+hostname TORRE2
+ 
+//configuración para unir torre del medio con crossover
+ipv6 unicast-routing
+interface GigabitEthernet0/0
+ipv6 address CCCC::1/64
+ipv6 address FE80::1 link-local
+no shutdown
+ 
+//Configurar gig 0/0 para su misma red del router hacia el switch
+no ip domain-lookup
+ipv6 unicast-routing
+interface GigabitEthernet0/1
+ipv6 address 2314::1/64
+ipv6 address FE80::1 link-local
+no shutdown
+//configurar serial
+int se0/1/0 
+ipv6 unicast-routing 
+interface se0/1/0
+ipv6 address AAAA::2/64
+ipv6 address FE80::1 link-local
+no shutdown
+ 
+int se0/1/1
+ipv6 unicast-routing 
+interface se0/1/1
+ipv6 address BBBB::2/64
+ipv6 address FE80::1 link-local
+no shutdown
+ 
+//configurar loopback
+int loopback1 
+ipv6 unicast-routing
+int loopback1 
+ipv6 address BBB::1/64 
+ipv6 address FE80::1 link-local
+no shut
+ 
+ 
+//ip route 
+ipv6 route 1234::/64 Se0/1/0
+ipv6 route 4321::/64 Se0/1/1
+ipv6 route CCC::/64 Se0/1/0
+ipv6 route AAA::/64 Se0/1/1
+ipv6 route C::/64 CCCC::2
+ipv6 route A::/64 CCCC::2
+ipv6 route B::/64 CCCC::2
+ipv6 route EEEE::/64 CCCC::2
+ipv6 route DDDD::/64 CCCC::2
+ipv6 route BB::/64 CCCC::2
+ipv6 route AA::/64 CCCC::2
+ipv6 route CC::/64 CCCC::2
+ 
+ 
+//TORRE 3
+//Router
+ 
+enable
+configure terminal
+hostname TORRE3
+ 
+//Configurar gig 0/0 para su misma red del router hacia el switch
+no ip domain-lookup
+ipv6 unicast-routing
+interface GigabitEthernet0/0
+ipv6 address 4321::1/64
+ipv6 address FE80::1 link-local
+no shutdown
+//configurar serial
+int se0/0/0 
+ipv6 unicast-routing 
+interface se0/0/0
+ipv6 address BBBB::1/64
+ipv6 address FE80::1 link-local
+clock rate 128000
+no shutdown
+ 
+//configurar loopback
+int loopback1 
+ipv6 unicast-routing
+int loopback1 
+ipv6 address AAA::1/64 
+ipv6 address FE80::1 link-local
+no shut
+ 
+//ip route
+ipv6 route ::/0 BBBB::1
+ 
+ 
+ 
+//TORRE 4
+//Router
+ 
+enable
+configure terminal
+hostname TORRE4
+ 
+//Configurar gig 0/0 para su misma red del router hacia el switch
+no ip domain-lookup
+ipv6 unicast-routing
+interface GigabitEthernet0/0
+ipv6 address C::1/64
+ipv6 address FE80::1 link-local
+no shutdown
+ 
+//configurar serial
+ipv6 unicast-routing
+interface Serial0/2/0
+ipv6 address DDDD::2/64
+ipv6 address FE80::1 link-local
+clock rate 128000
+no shutdown
+ 
+ 
+//configurar loopback
+int loopback1 
+ipv6 unicast-routing
+int loopback1 
+ipv6 address CC::1/64 
+ipv6 address FE80::1 link-local
+no shut
+ 
+//ip route
+ipv6 route ::/0 DDDD::1
+ 
+ 
+//TORRE 5
+//Router
+ 
+enable
+configure terminal
+hostname TORRE5
+ 
+//configuración para unir torre del medio con crossover
+ipv6 unicast-routing
+interface GigabitEthernet0/0
+ipv6 address CCCC::2/64
+ipv6 address FE80::1 link-local
+no shutdown
+ 
+//Configurar gig 0/1 para su misma red del router hacia el switch
+no ip domain-lookup
+ipv6 unicast-routing
+interface GigabitEthernet0/1
+ipv6 address B::1/64
+ipv6 address FE80::1 link-local
+no shutdown
+//configurar serial
+int se0/0/0 
+ipv6 unicast-routing 
+interface se0/0/0
+ipv6 address DDDD::1/64
+ipv6 address FE80::1 link-local
+no shutdown
+ 
+int se0/0/1
+ipv6 unicast-routing 
+interface se0/0/1
+ipv6 address EEEE::1/64
+ipv6 address FE80::1 link-local
+no shutdown
+ 
+//configurar loopback
+int loopback1 
+ipv6 unicast-routing
+int loopback1 
+ipv6 address BB::1/64 
+ipv6 address FE80::1 link-local
+no shut
+ 
+//ip route 
+ipv6 route AA::/64 Se0/0/1
+ipv6 route A::/64 Se0/0/1
+ipv6 route CC::/64 Se0/0/0
+ipv6 route C::/64 Se0/0/0
+ipv6 route AAA::/64 CCCC::1
+ipv6 route BBB::/64 CCCC::1
+ipv6 route CCC::/64 CCCC::1
+ipv6 route 4321::/64 CCCC::1
+ipv6 route 1234::/64 CCCC::1
+ipv6 route 2314::/64 CCCC::1
+ipv6 route AAAA::/64 CCCC::1
+ipv6 route BBBB::/64 CCCC::1
+ 
+ 
+//TORRE 6
+//Router
+ 
+enable
+configure terminal
+hostname TORRE6
+ 
+//Configurar gig 0/0 para su misma red del router hacia el switch
+no ip domain-lookup
+ipv6 unicast-routing
+interface GigabitEthernet0/0
+ipv6 address A::1/64
+ipv6 address FE80::1 link-local
+no shutdown
+//configurar serial
+int se0/2/0 
+ipv6 unicast-routing 
+interface se0/2/0
+ipv6 address EEEE::2/64
+ipv6 address FE80::1 link-local
+clock rate 128000
+no shutdown
+ 
+//configurar loopback
+int loopback1 
+ipv6 unicast-routing
+int loopback1 
+ipv6 address AA::1/64 
+ipv6 address FE80::1 link-local
+no shut
+ 
+//ip route
+ipv6 route ::/0 EEEE::1
